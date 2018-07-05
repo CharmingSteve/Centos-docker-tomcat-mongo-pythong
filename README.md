@@ -30,13 +30,18 @@ docker build . -t <a different and easy name to remember>
 This Dockerfile installs python 2.7, the latest mongodb and tomcat. This build of tomcat didnt install the standard Welcome page, so you can see that it's working so the Dockerfile copies these files. It also sets the mongo and tomcat to launch as services using systemd.
 
 
-to run your image as a container you need to have it use your systems systemd dir and run dir as VOLUMES. so run the follwing command
+To run your image as a container you need to have it use your systems systemd dir and run dir as VOLUMES. 
+
+We want tomcat to expose a port that is different from its default - 7080 instead of 8080.
+
+
+Run the following command.
 
 docker run -ti -v /sys/fs/cgroup:/sys/fs/cgroup:ro   -v /tmp/$(mktemp -d):/run  -p  7080:8080 -p 27017:27017 <a different and easy name to remember>:latest
   
-Now you can see the standard tomcat welcome page at http://YOURDOMAIN:7080
+Now you can see the standard tomcat welcome page at http://YOURDOMAIN:7080 
 
+If you don't need all of this in one container you can run docker-compose and link them together. for this change the name of tomcat-python-mongo.yml to docker-compose.yml then run
+docker-compose up 
 
-
-
-We want tomcat to expose a port that is different from its default - 7080 instead of 8080
+tomcat-python-mongo.yml
