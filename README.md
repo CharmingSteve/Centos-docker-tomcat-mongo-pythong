@@ -43,3 +43,5 @@ Now you can see the standard tomcat welcome page at http://YOURDOMAIN:7080
 If you don't need all of this in one container you can run docker-compose and link them together. run:
 
 docker-compose up 
+
+See the blog of this repo, which might get updated in addition to here http://charmingwebdesign.com/check-out-my-new-repository-project-charmingsteve-centos-docker-tomcat-mongo-pythong/
