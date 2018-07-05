@@ -1,6 +1,9 @@
 FROM centos:7
 ENV container docker
-# from https://hub.docker.com/_/centos/ - Systemd is now included in both the centos:7 and centos:latest base containers, but it is not active by default. In order to use systemd, you will need to include text similar to the example Dockerfile below: This Dockerfile deletes a number of unit files which might cause issues. From here, you are ready to build your base image.
+# from https://hub.docker.com/_/centos/ - Systemd is now included in both the centos:7 and centos:latest base containers, 
+# but it is not active by default. In order to use systemd, you will need to include text similar to the example Dockerfile 
+# below: This Dockerfile deletes a number of unit files which might cause issues. 
+# From here, you are ready to build your base image.
 RUN (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == \
 systemd-tmpfiles-setup.service ] || rm -f $i; done); \
 rm -f /lib/systemd/system/multi-user.target.wants/*;\
