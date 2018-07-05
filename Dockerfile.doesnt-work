@@ -1,0 +1,29 @@
+FROM centos:7
+
+yum install -y epel-release 
+yum update -y
+yum install -y python-setuptools
+easy_install supervisor
+
+ADD mongodb-org-4.0.repo /etc/yum.repos.d
+RUN mkdir -p /data/db
+
+
+RUN yum  mongodb-org 
+
+
+EXPOSE 8080
+
+RUN mkdir -p /var/log/supervisor
+#in supervisor file the command /usr/bin/mongod
+/usr/sbin/tomcat 
+ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+
+
+ADD my_first_process my_first_process
+ADD my_second_process my_second_process
+CMD ["/usr/bin/supervisord"]
+
+#run
+# command here 7080
+
